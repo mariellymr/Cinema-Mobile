@@ -133,7 +133,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\marie\\Documents\\Cinema-Mobile\\cinema\\src\\generated\\prisma",
+      "value": "C:\\Users\\marie\\Documents\\Cinema-Mobile\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -148,7 +148,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\marie\\Documents\\Cinema-Mobile\\cinema\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\marie\\Documents\\Cinema-Mobile\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -162,6 +162,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
