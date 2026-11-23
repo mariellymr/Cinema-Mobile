@@ -18,6 +18,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('users')
     .addTag('auth')
+    .addTag('notificacoes')
     .addBearerAuth( // Adiciona o campo de autenticação no Swagger
       {
         type: 'http',

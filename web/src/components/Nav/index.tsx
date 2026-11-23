@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { NotificationBell } from "../NotificationBell";
 
 export const Nav = () => {
   const { user, logout, isAuthenticated } = useAuth();
@@ -74,7 +75,10 @@ export const Nav = () => {
           </ul>
         </div>
 
-        <ul className="nav">
+        <ul className="nav align-items-center">
+          <li className="nav-item">
+            <NotificationBell />
+          </li>
           {!isAuthenticated ? (
             <li className="nav-item">
               <Link className="btn btn-outline-light ms-3" style={{ borderColor: '#ca0000', color: '#fff', backgroundColor: '#ca0000' }} to="/login">Entrar</Link>

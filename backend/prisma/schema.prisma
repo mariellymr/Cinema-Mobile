@@ -85,3 +85,14 @@ model Ingresso {
   user          User?    @relation(fields: [userId], references: [id])
 }
 
+// 6. NOTIFICAÇÕES (Módulo de Mensageria / Kafka)
+
+model Notificacao {
+  id       Int      @id @default(autoincrement())
+  titulo   String
+  mensagem String
+  filmeId  Int?
+  lida     Boolean  @default(false)
+  criadaEm DateTime @default(now())
+}
+
