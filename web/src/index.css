@@ -1,0 +1,14 @@
+/* Global Typography Standardization */
+body {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+/* Ensure inheritance for all elements overriding Bootstrap defaults */
+*, h1, h2, h3, h4, h5, h6, p, span, div, a, input, button, select, textarea, table, th, td {
+  font-family: inherit;
+}
+
+/* Strict exception for Logo/Brand */
+.navbar-brand, .logo-brand {
+  font-family: 'Lobster Two', cursive !important;
+}

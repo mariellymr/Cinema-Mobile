@@ -1,0 +1,44 @@
+{
+  "filmes": [
+    {
+      "titulo": "avatar 3 aaaa",
+      "genero": "Fantasia",
+      "descricao": "aaaaaa",
+      "classificacao": "14 Anos",
+      "duracao": 180,
+      "estreia": "2025-12-12",
+      "id": "3bd8"
+    }
+  ],
+  "salas": [
+    {
+      "nome": "VIP 01",
+      "capacidade": 99,
+      "tipo": "IMAX",
+      "id": "3685"
+    }
+  ],
+  "sessoes": [
+    {
+      "filmeId": "3bd8",
+      "salaId": "3685",
+      "dataHora": "2025-12-13T18:30",
+      "preco": 26,
+      "idioma": "Dublado",
+      "formato": "2D",
+      "id": "b09b"
+    }
+  ],
+  "ingressos": [
+    {
+      "id": "d976",
+      "sessaoId": "b09b",
+      "cliente": "Maria",
+      "cpf": "99999999960",
+      "assento": "K15",
+      "pagamento": "Dinheiro",
+      "combo": "Combo Premium (Pipoca + 2 Refri + Chocolate)",
+      "valorFinal": 65
+    }
+  ]
+}
