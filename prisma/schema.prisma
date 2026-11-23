@@ -7,11 +7,81 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  ADMIN
+  USER
+}
+
+// 1. USUÁRIOS E CLIENTES (Módulo de Usuários)
+
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
-  name      String?
+  name      String
   password  String
+  role      Role     @default(USER)
   createdAt DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt
+  ingressos Ingresso[]
 }
+
+// 2. SALAS (Módulo de Conteúdo/Estrutura)
+
+model Sala {
+  id         Int      @id @default(autoincrement())
+  nome       String   // ex: "Sala 01", "IMAX"
+  capacidade Int
+  tipo       String   // ex: "2D", "3D", "IMAX"
+
+  sessoes    Sessao[]
+}
+
+// 3. FILMES (Módulo de Conteúdo/Estrutura)
+
+model Filme {
+  id                      Int      @id @default(autoincrement())
+  titulo                  String
+  descricao               String
+  genero                  String   // Ação, Comédia, Drama, etc.
+  classificacaoIndicativa String   // Livre, 10, 12, 14, 16, 18
+  duracaoMinutos          Int
+  dataEstreia             DateTime
+
+  sessoes                 Sessao[]
+}
+
+// 4. SESSÕES (Módulo de Programação/Exibição)
+
+model Sessao {
+  id        Int      @id @default(autoincrement())
+  dataHora  DateTime
+  preco     Float
+  idioma    String   // Dublado, Legendado
+  formato   String   // 2D, 3D
+
+  filmeId   Int
+  filme     Filme    @relation(fields: [filmeId], references: [id])
+
+  salaId    Int
+  sala      Sala     @relation(fields: [salaId], references: [id])
+
+  ingressos Ingresso[]
+}
+
+// 5. INGRESSOS / VENDAS (Módulo Financeiro / Checkout)
+
+model Ingresso {
+  id            Int      @id @default(autoincrement())
+  nomeCliente   String
+  cpfCliente    String
+  assento       String   // ex: "A10"
+  tipoPagamento String   // Cartão, Pix, Dinheiro
+  dataVenda     DateTime @default(now())
+
+  sessaoId      Int
+  sessao        Sessao   @relation(fields: [sessaoId], references: [id])
+
+  userId        Int?
+  user          User?    @relation(fields: [userId], references: [id])
+}
+

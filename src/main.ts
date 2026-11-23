@@ -6,8 +6,9 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
 
-  // Configuração do ValidationPipe (importante para o Swagger ler as validações)
+  // Configuração do ValidationPipe (importante para o Swagger ler as validações dos DTOs)
   app.useGlobalPipes(new ValidationPipe());
 
   // Configuração do Swagger
@@ -16,6 +17,18 @@ async function bootstrap() {
     .setDescription('Documentação da API de Usuários com NestJS e Prisma')
     .setVersion('1.0')
     .addTag('users')
+    .addTag('auth')
+    .addBearerAuth( // Adiciona o campo de autenticação no Swagger
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        in: 'header',
+      },
+      'token',
+      )
+
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

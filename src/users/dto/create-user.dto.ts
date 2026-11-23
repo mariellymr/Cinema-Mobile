@@ -7,15 +7,15 @@ export class CreateUserDto {
     description: 'O email do usuário' 
   })
   @IsEmail()
-  email: string;
+    email: string;
 
   @ApiProperty({ 
     example: 'João Silva', 
     description: 'Nome completo' 
   })
   @IsString()
-  @IsNotEmpty()
-  name: string;
+    @IsNotEmpty()
+    name: string;
 
   @ApiProperty({ 
     example: 'senha123', 
@@ -23,6 +23,6 @@ export class CreateUserDto {
     minLength: 6 
   })
   @IsString()
-  @MinLength(6)
-  password: string;
+    @MinLength(6)
+    password: string;
 }

@@ -3,9 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
+import { SalasModule } from './salas/salas.module';
+import { FilmesModule } from './filmes/filmes.module';
+import { SessoesModule } from './sessoes/sessoes.module';
+import { IngressosModule } from './ingressos/ingressos.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [PrismaModule, UsersModule],
+  imports: [PrismaModule, UsersModule, SalasModule, FilmesModule, SessoesModule, IngressosModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
